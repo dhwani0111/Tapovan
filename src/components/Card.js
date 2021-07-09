@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import EditTask from '../modals/EditTask'
 
-
-const Card = ({taskObj, index, deleteTask, updateListArray}) => {
+const Card = ({taskObj, id, deleteActiveIcon, updateListArray}) => {
     const [modal, setModal] = useState(false);
+    const i = Math.floor(Math.random() * 5);
 
     const colors = [
         {
@@ -33,23 +33,24 @@ const Card = ({taskObj, index, deleteTask, updateListArray}) => {
     }
 
     const updateTask = (obj) => {
-        updateListArray(obj, index)
+        updateListArray(obj, id)
     }
 
     const handleDelete = () => {
-        deleteTask(index)
+        deleteActiveIcon(id)
     }
-
+    
     return (
-        <div class = "card-wrapper mr-3" style={{margin:20}}>
-            <div class = "card-top" style={{"background-color": colors[index%5].primaryColor}}></div>
+        <div class = "card-wrapper mr-3" style ={{margin:10,height:160,width:260}}>
+            <div class = "card-top" style={{"background-color": colors[i%5].primaryColor}}></div>
             <div class = "task-holder">
-                <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px"}}>{taskObj.Name}</span>
-                <p className = "mt-3"><a href="#">{taskObj.Description}</a></p>
-                <p className = "mt-3">{taskObj.Date}</p>
-                <div style={{"position": "absolute", "right" : "30px", "bottom" : "20px"}}>
-                    <i class = "far fa-edit mr-3" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer",paddingRight:10}} onClick = {() => setModal(true)}></i>
-                    <i class="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
+                <span class = "card-header" style={{"background-color": colors[i%5].secondaryColor, "border-radius": "10px"}}>{taskObj.Name}</span>
+                <a className = "mt-3" href={taskObj.Description}>Google form Link</a>
+                <p className = "mt-3">Date:{taskObj.Date}</p>
+                {/* {checkActiveStatus()} */}
+                <div style={{"position": "absolute", "right" : "10px", "bottom" : "10px"}}>
+                    <i class = "far fa-edit mr-3" style={{"color" : colors[i%5].primaryColor, "cursor" : "pointer",paddingRight : 10}} onClick = {() => setModal(true)}></i>
+                    <i class="fas fa-trash-alt" style = {{"color" : colors[i%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
                 </div>
         </div>
         <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
