@@ -3,13 +3,14 @@ import { db } from '../firebase';
 import CreateTask from '../modals/CreateTask'
 import Card from './Card';
 import Card1 from './Card1';
+import Navbar from './Navbar';
 import './quiz.css';
 const Quiz = () => {
     const [modal, setModal] = useState(false);
    // const [taskList, setTaskList] = useState([])
     const [ActiveList, setActiveList] = useState([])
     const [completedList, setCompletedList] = useState([])
-    const [showActive,setShowActive] = useState(false)
+    const [showActive,setShowActive] = useState(true)
     const [showCompleted,setShowCompleted] = useState(false)
     
 
@@ -155,6 +156,7 @@ const Quiz = () => {
 
     return (
         <>
+        <Navbar/>
             <div className = "header text-center">
                 <h3>Quiz</h3>
                 <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Quiz</button>

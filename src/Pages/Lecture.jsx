@@ -3,6 +3,7 @@ import { db } from '../firebase';
 import CreateLecture from './CreatLecture';
 import './lecture.css';
 import * as ReactBootStrap from 'react-bootstrap';
+import Navbar from '../components/Navbar';
 const Lecture= () => {
     const [modal, setModal] = useState(false);
     const [LectureList, setLectureList] = useState([])
@@ -113,6 +114,7 @@ const Lecture= () => {
 
     return (
         <>
+        <Navbar/>
             <div className = "header text-center">
                 <h3>Lecture</h3>
                 <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Lecture</button>

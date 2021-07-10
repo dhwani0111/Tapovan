@@ -27,7 +27,7 @@ function App() {
   return (
 
     <Router>
-       <Navbar />
+       
     <Switch>
      {/* // Admin Side */}
       <Route exact path='/' component={Signup}/>

@@ -3,7 +3,7 @@ import Card from './Cards/Cards';
 import { useHistory } from 'react-router-dom';
 import fire from "./firebase";
 import Login from './Login'
-
+import Navbar from './components/Navbar';
 //admin page edit here
 
 const Admin = () => {
@@ -13,16 +13,17 @@ const Admin = () => {
         console.log('hello')
       }
     return (
-        <section className="hero">
+       <>
         {/* //     <div>
         //         {history.push(`\admin`)}
         //     </div> */}
-            <Card/>
-            <nav>
+            
+            <Navbar/>
+            
                 <button onClick={handleLogOut}>Logout</button>
-            </nav>
+           
 
-        </section>
+        </>
     );
 };
 

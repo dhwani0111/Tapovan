@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { db } from '../firebase';
 import './lecture.css';
 import * as ReactBootStrap from 'react-bootstrap';
+import Navbar from '../components/Navbar';
 const UserList= () => {
     const [modal, setModal] = useState(false);
     const [Users, setUsers] = useState([])
@@ -63,6 +64,7 @@ const UserList= () => {
 
     return (
         <>
+        <Navbar/>
             <div className = "header text-center">
                 <h3>UserList</h3>
                 

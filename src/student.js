@@ -5,7 +5,7 @@ import Card from './student/Cards/studentCards'
 import fire from "./firebase";
 import Login from './Login'
 import { useHistory } from 'react-router-dom';
-
+import Navbar from './student/components/Navbar'
 
 const Student = () => {
     let history = useHistory();
@@ -17,17 +17,13 @@ const Student = () => {
       }
     
     return (
-        <section className="hero">
-            {/* <div>
-                {history.push('\home')}
-            </div> */}
-            <nav>
+        <>
+        <Navbar/>
                 <button onClick={handleLogOut}>Logout</button>
-            </nav>
-            <Card/>
+            
             
 
-        </section>
+        </>
     );
 };
 
