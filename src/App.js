@@ -1,5 +1,10 @@
-// import './App.css';
-import { BrowserRouter as  Router,Route, Switch } from "react-router-dom";
+import Navbar from "./components/NavigationBar/NavBar";
+import Home from "./Pages/HomePage/Home";
+import News from "./Pages/News/News";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import UpcomingEvent from "./Pages/UpcomingEvent/UpcomingEvent";
 import React, {useEffect, useState} from 'react';
 
 // Admin Side
@@ -7,9 +12,8 @@ import Search from './Pages/UserList'
 import Quiz from './components/Quiz';
 import Materials from './upload/Materials';
 import Lecture from './Pages/Lecture'
-import Card from './Cards/Cards';
-import Navbar from './components/Navbar';
-import Signup from './signUp';
+// import Navbar from './components/Navbar';
+import Register from './auth/Register';
 //Dark light theme
 
 // Student Side
@@ -20,7 +24,7 @@ import StudentMaterial from './student/Materials'
 import StudentHome from './student'
 import Admin from './admin'
 
-import Login from './Login'
+import Login from './auth/Login'
 
 function App() {
 
@@ -30,9 +34,12 @@ function App() {
        
     <Switch>
      {/* // Admin Side */}
-      <Route exact path='/' component={Signup}/>
-      {/* <Route exact path='/' component={Card}/> */}
-      <Route exact path='/Admin' component={Admin}/>
+      <Route exact path='/register' component={Register}/>
+      <Route exact path='/login' component={Login}/>
+      <Route exact path="/" component={Home} />
+      <Route path="/aboutus" component={UpcomingEvent} />
+        <Route path="/contactus" component={News} />
+      <Route exact path='/admin' component={Admin}/>
       <Route exact path='/search' component={Search}/>
       <Route exact path='/quiz' component={Quiz}/>
       <Route exact path='/materials' component={Materials}/>
@@ -46,6 +53,7 @@ function App() {
 
 
     </Switch>
+    
   </Router>
   );
 }

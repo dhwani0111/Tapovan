@@ -5,9 +5,17 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
-
-function Navbar() {
+import fire from "../firebase";
+import { useHistory } from 'react-router-dom';
+import secureStorage from "../SecureStorage";
+const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
+  let history = useHistory();
+  const handleLogOut =  () => {
+    fire.auth().signOut();
+    secureStorage.removeItem("user");
+    history.push("/");
+  }
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -18,6 +26,8 @@ function Navbar() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          <button onClick = {handleLogOut} >Logout</button>
+
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>

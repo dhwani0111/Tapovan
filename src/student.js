@@ -1,39 +1,28 @@
-import { BrowserRouter as  Router,Route, Switch } from "react-router-dom";
-import React, {useEffect, useState} from 'react';
-import Card from './student/Cards/studentCards'
-//student page edit here
-import './student.css'
-import fire from "./firebase";
-import Login from './Login'
-import { useHistory } from 'react-router-dom';
+import React,{useEffect} from "react";
 import Navbar from './student/components/Navbar'
-import Signup from './signUp';
+import secureStorage from "./SecureStorage";
+import "./student.css"
+
 
 const Student = () => {
-    let history = useHistory();
+    const user = secureStorage.getItem("user");
+    const name = user.name + " " + user.surname;
 
-    function handleLogOut() {
-        fire.auth().signOut().then(function(){
-            history.push("/");
-        })
-      }
-    
     return (
         <>
-        <Navbar/>
+         <Navbar/>
         <div className = "header text-center">
-        <h3 >User Profile</h3>
+        <h3 >Student's Profile</h3>
         </div>
         <div class="container">
 		<div class="main-body">
 			<div class="row mb-3">
-				{/* <div class="col-lg-2"> */}
 					<div class="card">
 						<div class="card-body">
 							<div class="d-flex flex-column align-items-center text-center">
 								<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110"/>
 								<div class="mt-3">
-									<h4>John Doe</h4>
+									<h4>{name}</h4>
 									
 								</div>
 							</div>
@@ -44,10 +33,18 @@ const Student = () => {
 						<div class="card-body">
 							<div class="row mb-4">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
+									<h6 class="mb-0">First Name</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="John Doe"/>
+									<input type="text" class="form-control" value={user.name} readOnly/>
+								</div>
+							</div>
+                            <div class="row mb-4">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Last Name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control" value={user.surname} readOnly/>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -55,47 +52,28 @@ const Student = () => {
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="john@example.com"/>
+									<input type="text" class="form-control" value={user.email} readOnly/>
 								</div>
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
+									<h6 class="mb-0">Phone Number</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(239) 816-9029"/>
+									<input type="text" class="form-control" value={user.number} readOnly/>
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Mobile</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(320) 380-4539"/>
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="Bay Area, San Francisco, CA"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes"/>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
-			{/* </div> */}
 		</div>
 	</div>
         <br></br>
-        <button onClick={handleLogOut}>Logout</button> 
-        
+
+            
+            
+
         </>
     );
 };

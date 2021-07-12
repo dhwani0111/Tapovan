@@ -32,7 +32,7 @@ export const SidebarData = [
   {
     title: 'Search',
     path: '/search',
-    icon: <IoIcons.IoMdPeople />,
+    icon: <IoIcons.IoMdSearch />,
     cName: 'nav-text'
   },
  
