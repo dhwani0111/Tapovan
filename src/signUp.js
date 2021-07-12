@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import Login from "./Login";
 import fire from "./firebase";
 import "./index.css";
@@ -24,7 +25,7 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
-
+ const history=useHistory();
   const clearInputs = () => {
     setEmail("");
     setPassword("");
@@ -169,7 +170,10 @@ const SignUp = () => {
     fire.auth().onAuthStateChanged((user) => {
       clearInputs();
       if (user) {
+        
+        authenticate();
         setUser(user);
+        localStorage.setItem("user",JSON.stringify(user));
       } else {
         setUser("");
       }
@@ -177,15 +181,22 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    authListener();
+    if (localStorage.getItem("user")){
+      authenticate();
+    }
+    else{
+      authListener();
+    handleLogin();
+    }
+    
   }, []);
 
   function authenticate() {
     // if(role1 == "Admin")
     if (role1 == "Student") {
-      return (<Student />)
+      history.push("/home")
     } else if (role1 == "Admin") {
-      return (<Admin  />)
+      history.push("/Admin")
     }
   }
 
