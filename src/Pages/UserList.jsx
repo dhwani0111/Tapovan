@@ -69,11 +69,11 @@ const UserList= () => {
                 <h3>UserList</h3>
                 
             </div>
-            <input type="text" onChange={(e)=>{setsearchTerm(e.target.value)}} placeholder="Search Name..." style={{float:'centre',width:'30%',marginTop:15,marginLeft:550,borderColor:'#000',borderWidth:1}}/>
+            <input type="text" onChange={(e)=>{setsearchTerm(e.target.value)}} placeholder="Search Name..." style={{width:'20%',height:'40px',marginTop:15,marginLeft:1150,borderColor:'#000',borderWidth:3}}/>
             <div className = "task-container">
                 
                 <ReactBootStrap.Table striped bordered hover height="50">
-                    <thead>
+                    <thead className="tabhd">
                         <tr>
                             <th>Name</th>
                             <th>Surname</th>

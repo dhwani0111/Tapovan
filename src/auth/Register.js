@@ -146,7 +146,7 @@ const saveUser = () =>
       <p className="errorMsg">{error.passwordError}</p>
 
       <div className="btnContainer">
-        <button  type = "submit" style = {{"width":"100%"}} onClick={handleSignup}>Sign Up</button>
+        <button  type = "submit" className="button" style = {{"width":"100%"}} onClick={handleSignup}><span>Sign Up</span></button>
 
         <p>
         Already have an account?  &nbsp;

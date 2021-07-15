@@ -145,7 +145,7 @@ const Login = () => {
         <p className="errorMsg">{error.passwordError}</p>
 
         <div className="btnContainer">
-          <button onClick={handleLogin} style = {{"width":"100%"}}>Sign In</button>
+          <button onClick={handleLogin} className="button" style = {{"width":"100%"}}><span>Sign In</span></button>
 
           <p>
             Don't have an account? &nbsp;
